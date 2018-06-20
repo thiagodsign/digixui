@@ -1,0 +1,129 @@
+.pagina-de-entrada {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: auto minmax(464px, 40%);
+  grid-template-rows: 100%;
+  @media (max-width: 1024px) {
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+  }
+}
+
+.pagina-de-entrada__container {
+  padding: 48px;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  position: relative;
+}
+
+.pagina-de-entrada__container_primario {
+  grid-column-start: 1; 
+  background-image: url(../imagens/imagem-do-sistema.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  @media (max-width: 1024px) {
+    grid-row-start: 2;  
+  }
+  
+  .pagina-de-entrada__filtro-do-container {
+    background: rgba($cor-primaria, .8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .pagina-de-entrada__logo-digix {
+    height: 32px;
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    img {
+      height: 100%;
+    }
+  }
+
+  .pagina-de-entrada__conteudo-do-container {
+    width: 80%;
+    color: $cor-branca;
+    padding: 48px 0;
+    z-index: 1;
+    @media (max-width: 1024px) {
+      width: auto;
+      max-width: 540px;
+    }
+
+    .titulo_grande {
+      max-width: 600px;
+    }
+    
+    .texto_medio {
+      max-width: 580px;
+      line-height: 28px;
+    }
+    
+    .botao {
+      @media (max-width: 1024px) {
+      width: 100%;
+      justify-content: center;
+      }
+    }
+  }
+}
+
+.pagina-de-entrada__container_secundario {
+  padding: 48px;
+  position: relative;
+  background-color: $cor-branca;
+  grid-column-start: 2;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  @media (max-width: 1024px) {
+    grid-column-start: 1;  
+    grid-row-start: 1;  
+  }
+
+  .pagina-de-entrada__conteudo-do-container {
+    max-width: 540px;
+    width: 100%;
+    @media (max-width: 1024px) {
+      max-width: 540px;
+    }
+    
+    .pagina-de-entrada__logo-sistema {
+      display: block;
+      height: 64px;
+      margin-bottom: 24px;
+    }
+    
+    .texto_medio {
+      line-height: 28px;  
+    }
+    
+    @media (max-width: 1024px) {
+      .botao {
+        width: 100%;
+        margin-bottom: 16px;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.pagina-de-entrada {
+  .formulario {
+    input {
+      margin-bottom: 8px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

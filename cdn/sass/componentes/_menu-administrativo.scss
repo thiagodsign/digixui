@@ -1,0 +1,117 @@
+
+#botao-abrir-menu-administrativo {
+  &:hover ~ .menu-administrativo {
+    display: block;
+  }
+
+  &:focus ~ .menu-administrativo {
+    display: block;
+  }
+}
+
+.menu-administrativo {
+  display: none;
+  position: absolute;
+  top: 20px;
+  right: -24px;
+  margin: 24px;
+  padding: 20px 0 0 0;
+  z-index: 3;
+  border-radius: 5px;
+
+  &:hover, &:focus {
+    display: block;
+  }
+}
+
+.menu-administrativo_ativo {
+  display: block;
+}
+
+.menu-administrativo__lista {
+  width: 320px;
+  border-radius: 5px;
+  box-shadow: 4px 4px 10px rgba($cor-preta, .15);
+}
+
+.menu-administrativo__cabecalho {
+  display: flex;
+  border-radius: 5px 5px 0px 0px;
+  width: 100%;
+  background: $cor-terciaria;
+  align-items: center;
+  color: $cor-branca;
+  padding: 16px 8px;
+
+  .menu-administrativo__icone-do-usuario {
+    border: 2px solid $cor-secundaria;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    margin: 0 8px;
+    color: $cor-branca;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:before {
+    content: " ";
+    position: absolute;
+    top: 4px;
+    right: 16px;
+    height: 0;
+    width: 0;
+    border: solid transparent;
+    border-color: transparent;
+    border-width: 8px;
+    margin-left: -8px;
+    pointer-events: none;
+    border-bottom-color: $cor-terciaria;
+  }
+}
+
+.menu-administrativo__lista-de-itens {
+  padding: 0; 
+  margin: 0;
+  & > .menu-administrativo__item:last-child {
+    .menu-administrativo__botao-item {
+      border-radius: 0 0 5px 5px;
+    }
+  }
+}
+
+.menu-administrativo__item {
+  list-style-type: none;
+  cursor: pointer;
+
+  .menu-administrativo__botao-item {
+    font-size: $fonte-pequena;
+    background: $cor-cinza-10;
+    color: $cor-terciaria;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    @include fonte-seminegrito;
+    min-width: 240px;
+    height: 48px;
+    padding: 0 16px;
+    
+    &:hover  {
+      background: $cor-cinza-30;
+    }
+
+    &:focus {
+      background: $cor-cinza-30;
+      outline: 0;
+    }
+  }
+
+  .menu-administrativo__icone {
+    color: $cor-secundaria;
+    margin-right: 16px;
+    width: 24px;
+    font-size: 18px;
+  }
+}

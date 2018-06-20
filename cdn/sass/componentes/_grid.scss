@@ -1,0 +1,204 @@
+$espaco-da-coluna: .5rem !default;
+@mixin grade {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: $espaco-da-coluna;
+}
+
+.grade {
+    @include grade;
+}
+
+.grade__linha {
+    @include grade;
+    display: flex;
+    flex-direction: row;
+    margin-left: (-$espaco-da-coluna);
+    margin-right: (-$espaco-da-coluna);
+    margin-top: (-$espaco-da-coluna);
+    &:last-child {
+        margin-bottom: (-$espaco-da-coluna);
+    }
+
+    &:not(:last-child) {
+        margin-bottom: calc(1.5rem - #{$espaco-da-coluna});
+    }
+
+    @media screen and (max-width: 800px) {
+        flex-direction: column;
+    }
+}
+
+// Modificadores da grade
+.grade__linha_sem-espaco-nas-colunas {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    & > .grade__coluna {
+        margin: 0;
+        padding: 0 !important;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 1.5rem;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+// Quebra de linha
+.grade__linha_multilinha {
+    flex-wrap: wrap;
+}
+
+// Alinhamento horizontal da grade
+.grade__linha_centralizado {
+    justify-content: center;
+}
+
+.grade__linha_alinhado-a-esquerda {
+    justify-content: flex-start;
+}
+
+.grade__linha_alinhado-a-direita {
+    justify-content: flex-end;
+}
+
+.grade__linha_distribuir-horizontalmente-entre-elementos {
+    justify-content: space-between;
+}
+
+.grade__linha_distribuir-horizontalmente-ao-redor {
+    justify-content: space-around;
+}
+
+.grade__linha_distribuir-horizontalmente-uniforme {
+    justify-content: space-evenly;
+}
+
+// Alinhamento de itens vertical
+.grade__linha_centralizado-vertical {
+    align-items: center;
+}
+
+.grade__linha_alinhado-ao-topo {
+    align-items: flex-start;
+}
+
+.grade__linha_alinhado-a-base {
+    align-items: flex-end;
+}
+
+.grade__linha_esticado-vertical {
+    align-items: stretch;
+}
+
+.grade__linha_alinhado-a-linha-de-base {
+    align-items: baseline;
+}
+
+// Inversão de linha
+.grade__linha_linha-ivertida {
+    flex-direction: row-reverse;
+}
+
+// grade colunas
+.grade__coluna {
+    display: block;
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: $espaco-da-coluna;
+}
+
+.grade__coluna_estreita {
+    flex: none;
+}
+
+//Modificador de alinhamento na coluna
+.grade__coluna_centralizado {
+    text-align: center;
+}
+
+.grade__coluna_alinhado-a-esquerda {
+    text-align: left;
+}
+
+.grade__coluna_alinhado-a-direita {
+    text-align: right;
+}
+
+.grade__coluna_distribuir-horizontalmente-entre-elementos {
+    text-align: justify;
+}
+
+.grade__coluna_centralizado-vertical {
+    align-self: center;
+}
+
+.grade__coluna_alinhado-ao-topo {
+    align-self: flex-start;
+}
+
+.grade__coluna_alinhado-a-base {
+    align-self: flex-end;
+}
+
+// Tamanho das colunas
+$tamanhos-das-colunas: (
+    'largura-total': 100%, 
+    'tres-quartos': 75%, 
+    'dois-tercos': 66.6666%, 
+    'metade': 50%, 
+    'um-terco': 33.3333%, 
+    'um-quarto': 25%, 
+    'um-quinto': 20%, 
+    'dois-quintos': 40%, 
+    'tres-quintos': 60%, 
+    'quatro-quintos': 80%
+);
+
+@each $nome, $tamanho in $tamanhos-das-colunas {
+    .grade__coluna {
+        &_#{$nome} {
+            flex: none;
+            width: $tamanho;
+        }
+
+        &_offet-#{$nome} {
+            margin-left: $tamanho;
+        }
+    }
+}
+
+@for $i from 1 through 12 {
+    .grade__coluna_#{$i} {
+        flex: none;
+        width: ($i / 12) * 100%;
+    }
+    
+    .grade__coluna_offset-#{$i} {
+        margin-left: ($i / 12) * 100%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+  .grade__coluna {
+    width: 100%;
+  }
+}
+
+.grade__coluna-invertida {
+    flex-direction: column-reverse;
+}
+
+.grade {
+    &.grade_sem-margem {
+        margin: 0;
+        padding: 0;
+    }
+}

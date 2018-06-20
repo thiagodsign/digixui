@@ -1,0 +1,37 @@
+$fonte-padrao: 'Open Sans';
+
+@font-face {
+  font-family: $fonte-padrao;
+  src: url('../fontes/OpenSans-Regular-webfont.eot');
+  src: url('../fontes/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fontes/OpenSans-Regular-webfont.woff') format('woff'),
+       url('../fontes/OpenSans-Regular-webfont.ttf') format('truetype'),
+       url('../fontes/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $fonte-padrao;
+  src: url('../fontes/OpenSans-Semibold-webfont.eot');
+  src: url('../fontes/OpenSans-Semibold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fontes/OpenSans-Semibold-webfont.woff') format('woff'),
+       url('../fontes/OpenSans-Semibold-webfont.ttf') format('truetype'),
+       url('../fontes/OpenSans-Semibold-webfont.svg#open_sanssemibold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: $fonte-padrao;
+  src: url('../fontes/OpenSans-Bold-webfont.eot');
+  src: url('../fontes/OpenSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../fontes/OpenSans-Bold-webfont.woff') format('woff'),
+       url('../fontes/OpenSans-Bold-webfont.ttf') format('truetype'),
+       url('../fontes/OpenSans-Bold-webfont.svg#open_sansbold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+$fonte-mini: 12px;
+$fonte-pequena: 14px;

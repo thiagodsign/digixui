@@ -1,0 +1,374 @@
+$classes-de-input:
+".input-texto,"
+".input-senha,"
+".input-data,"
+".input-data-local,"
+".input-email,"
+".input-mes,"
+".input-numero,"
+".input-busca,"
+".input-telefone,"
+".input-hora,"
+".input-url,"
+".input-semana,"
+".input-datalist,"
+".input-selecao";
+
+$input-nativo:
+"input[type=text],",
+"input[type=password],",
+"input[type=date],",
+"input[type=datetime-local],",
+"input[type=email],",
+"input[type=month],",
+"input[type=number],",
+"input[type=search],",
+"input[type=tel],",
+"input[type=time],",
+"input[type=url],",
+"input[type=week],",
+"datalist,",
+"select";
+
+.formulario {
+  width: 100%;
+}
+
+@each $input-nativo-no-formulario in $input-nativo {
+  #{$classes-de-input}, .formulario #{$input-nativo-no-formulario} {
+    width: 100%;
+    font-family: $fonte-padrao;
+    font-size: 16px;
+    height: 40px;
+    padding: 0 12px;
+
+    @include borda-arredondada-padrao;
+    border: 2px solid $cor-cinza-30;
+  
+    &:focus {
+      outline: 0;
+      border: 2px solid $cor-info;
+    }
+  
+    &:hover {
+      border-color: rgba($cor-info, .5)
+    }
+  
+    &:hover:focus {
+      outline: 0;
+      border: 2px solid $cor-info;
+    }
+  }
+}
+
+#{$classes-de-input}, input {
+  &_desabilitado, &:disabled {
+    pointer-events: none;
+    border-color: $cor-cinza-30;
+    background-color: $cor-cinza-20;
+  }
+}
+
+.input-selecao, select {
+  background: transparent;
+  -webkit-appearance: none;
+  -moz-appearance:    none;
+  background: url('../imagens/icone-select.svg') no-repeat;
+  background-position: right 12px bottom 50%;
+  background-size: 12px;
+  option {
+    margin-bottom: 30px;
+  }
+}
+
+.input-arquivo, input[type="file"] {
+  &::-webkit-file-upload-button {
+    @include fonte-seminegrito();
+    background: $cor-info;
+    border: 0;
+
+    cursor: pointer;
+    color: $cor-branca;
+    border-radius: 5px;
+  }
+
+  &::-ms-browse {
+    @include fonte-negrito();
+    background: $cor-info;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: $cor-branca;
+    border-radius: 5px;
+  }
+}
+
+// Modificador de tamanho para input
+
+%icone-da-busca {
+  background: url('../imagens/icone-busca.svg') no-repeat;
+}
+
+$altura-mini: 24px;
+$altura-pequena: 32px;
+$altura-media: 40px;
+$altura-grande: 48px;
+$altura-gigante: 54px;
+
+$fonte-mini: 12px;
+$fonte-pequena: 14px;
+$fonte-media: 16px;
+$fonte-grande: 18px;
+$fonte-gigante: 20px;
+
+$alturas-padrao: (mini, $altura-mini, $fonte-mini),
+                 (pequeno, $altura-pequena, $fonte-pequena),
+                 (medio, $altura-media, $fonte-media),
+                 (grande, $altura-grande, $fonte-media),
+                 (gigante, $altura-gigante, $fonte-media);
+
+@each $nome, $altura, $fonte in $alturas-padrao {
+  #{$classes-de-input} {
+    &_#{$nome} {
+      height: $altura;
+      padding: 0 ($fonte - 4);
+      font-size: $fonte;
+    }
+  }
+  
+  .formulario_#{$nome} {
+    #{$input-nativo} {
+      height: $altura;
+      padding: 0 ($fonte - 4);
+      font-size: $fonte;
+    }
+  }
+  
+  .input-busca_#{$nome}, .formulario_#{$nome} input[type=search] {
+    @extend %icone-da-busca;
+    padding-left: $fonte * 2 + $fonte / 2;
+    background-position: (($fonte * 3) /4) center;
+    background-size: $fonte;
+  }
+
+  .input-mes,
+  .input-semana,
+  .input-data,
+  .formulario input[type=month],
+  .formulario input[type=week],
+  .formulario input[type=date] {
+    &::-webkit-inner-spin-button {
+      display: none;
+    }
+  }
+
+  .input-arquivo_#{$nome}, .formulario_#{$nome} input[type="file"] {
+    width: 100%;
+    font-family: $fonte-padrao;
+    font-size: $fonte;
+
+    &::-webkit-file-upload-button {
+      font-size: $fonte;
+      background: $cor-info;
+      border: 0;
+      margin-right: 8px;
+      height: $altura;
+      padding: 0 $fonte;
+      cursor: pointer;
+      color: $cor-branca;
+      border-radius: 5px;
+    }
+
+    &::-ms-browse {
+      background: $cor-info;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      color: $cor-branca;
+      border-radius: 5px;
+    }
+  }
+}
+
+.input-label, .formulario label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.input-grupo, .formulario fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  .input-legenda, legend {
+    padding: 0;
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+}
+
+// Estilo de Checkbox e Radio
+
+.input-checkbox, 
+.input-radio {
+  display: flex !important;
+  align-items: center;
+  position: relative;
+  margin-bottom: 8px;
+  width: 8px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  input {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .input-marcador {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $cor-cinza-20;
+    border: 2px solid $cor-cinza-30;
+
+    &:focus {
+      border: 2px solid $cor-info;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: none;
+      height: 8px;
+    }
+  }
+
+  input:focus ~ .input-marcador {
+    border: 2px solid $cor-info;
+  }
+
+  &:hover input ~ .input-marcador {
+    background-color: $cor-cinza-30;
+  }
+
+  input:checked ~ .input-marcador {
+    background-color: $cor-cinza-20;
+  }
+
+  input:checked ~ .input-marcador:after {
+    display: block;
+  }
+}
+
+.input-radio_em-linha, .input-checkbox_em-linha {
+  display: inline-flex !important;
+  width: auto;
+}
+
+.input-checkbox, .formulario .input-checkbox {
+  height: 20px;
+  margin-right: 10px;
+  padding-left: 26px;
+
+  .input-marcador {
+    border-radius: 5px;
+    height: 20px;
+    width: 20px;
+    &:after {
+      left: 5px;
+      top: 1px;
+      width: 4px;
+      border: solid $cor-info;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+  }
+}
+
+.input-radio, .formulario .input-radio {
+  width: auto;
+  height: 18px;
+  padding-left: 24px;
+  margin-right: 12px;
+
+  .input-marcador {
+    border-radius: 50%;
+    height: 18px;
+    width: 18px;
+    &:after {
+      top: 3px;
+      left: 3px;
+      width: 8px;
+      background: $cor-info;
+      border-radius: 50%;
+    }
+  }
+}
+
+//Campo de texto
+
+.input-campo-de-texto, .formulario textarea {
+  font-family: $fonte-padrao;
+  border-radius: 5px;
+  border: 2px solid $cor-cinza-30;
+  padding: 16px;
+  width: 100%;
+  &:focus {
+    outline: none;
+    border: 2px solid $cor-info;
+  }
+}
+
+//Mensagens de formulário
+
+$cores-input: (erro, $cor-erro),
+              (sucesso, $cor-sucesso),
+              (atencao, $cor-atencao);
+
+@each $cor, $variavel-cor in $cores-input {
+  .input_#{$cor} {
+    border-color: rgba($variavel-cor, .5) !important;
+    background: rgba($variavel-cor, .05);
+    &:focus {
+      border-color: rgba($variavel-cor, 1);
+    }
+  }
+
+  .input-mensagem {
+    display: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    bottom: 4px;
+    font-size: 14px;
+    margin-top: 8px;
+  
+    &.input-mensagem_#{$cor} {
+      display: flex;
+      color: $variavel-cor;
+    }
+  }
+}
+
+//Estilos de campos autofill 
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: $cor-cinza-80;
+  -webkit-box-shadow: 0 0 0px 1000px $cor-branca inset;
+}

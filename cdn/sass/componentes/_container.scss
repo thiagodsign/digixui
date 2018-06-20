@@ -1,0 +1,47 @@
+// Bloco
+
+.container {
+  margin: 0 24px;
+  width: calc(100% - 48px);
+}
+
+// Modificadores de estilo
+
+.container_com-fundo {
+  @include borda-arredondada-padrao;
+	background: $cor-branca;
+	padding: 24px;
+}
+
+// Modificadores de tamanho
+
+$tamanhos-do-container: (mini, 656px),
+                        (pequeno, 912px),
+                        (medio, 1168px),
+                        (grande, 1424px),
+                        (gigante, 1680px);
+
+@each $nome, $tamanho in $tamanhos-do-container {
+  
+  .pagina_sem-menu-lateral .container_#{$nome} {
+    @media screen and (min-width: $tamanho + 48px) {
+      width: $tamanho;
+      margin: 0 auto;
+    }
+  }
+
+  .pagina_com-menu-lateral .container_#{$nome} {
+    @media screen and (min-width: $tamanho + 48px + 256px) {
+      width: $tamanho;
+      margin: 0 auto;
+    }
+  }
+
+}
+
+// Modificadores de margem
+
+.container_com-margem {
+  margin-top: 24px !important;
+  margin-bottom: 24px !important;
+}

@@ -1,0 +1,47 @@
+// powerNumber: calcula o valor de um número exposto a outro. Retorna um número;
+
+@function powerNumber($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+
+// calcularLuminancia: define se uma cor é escura ou clara. Retorna um número decimal entre 0 e 1 onde <= 0,5 é escuro e > 0,5 é claro.
+
+@function calcularLuminancia($cor) {
+  $cor-rgb: ('vermelho': red($cor),'verde': green($cor),'azul': blue($cor));
+  @each $nome, $valor in $cor-rgb {
+    $ajustado: 0;
+    $valor: $valor / 255;
+    @if $valor < 0.03928 {
+      $valor: $valor / 12.92;
+    }
+    @else {
+      $valor: ($valor + .055) / 1.055;
+      $valor: powerNumber($valor, 2);
+    }
+    $cor-rgb: map-merge($cor-rgb, ($nome: $valor));
+  }
+  @return (map-get($cor-rgb, 'vermelho') * .2126) + (map-get($cor-rgb, 'verde') * .7152) + (map-get($cor-rgb, 'azul') * .0722);
+}
+
+// inverterCor: Retorna 70% de preto transparente ou 100% branco opaco dependendo da luminância da cor.
+
+@function inverterCor($cor) {
+  @if (calcularLuminancia($cor) > 0.55) {
+    @return rgba(black, 0.7);
+  }
+  @else {
+    @return white;
+  }
+}
+

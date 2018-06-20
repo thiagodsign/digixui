@@ -1,0 +1,171 @@
+$cor-do-texto-da-tabela: $cor-cinza-90 !default;
+$cor-de-fundo-da-tabela: $cor-branca !default;
+
+$borda-da-tabela: 1px solid $cor-cinza-10 !default;
+$espessura-da-borda-da-tabela: 0 0 1px !default;
+$padding-da-tabela: .5em .75em !default;
+$cor-do-titulo-da-tabela: $cor-primaria !default;
+
+$espessura-da-borda-do-cabecalho-da-tabela: 0 0 2px !default;
+$cor-do-texto-do-cabecalho-da-tabela: $cor-primaria !default;
+$espessura-da-borda-do-rodape-da-tabela: 2px 0 0 !default;
+$cor-do-texto-do-rodape-da-tabela: $cor-cinza-90 !default;
+
+$cor-do-hover-do-fundo-da-linha-da-tabela: $cor-cinza-10 !default;
+
+$cor-do-fundo-da-linha-selecionada-da-tabela: $cor-primaria !default;
+$cor-do-texto-da-linha-selecionada-da-tabela: $cor-branca !default;
+
+$cor-de-fundo-da-linha-par-listrada-da-tabela: $cor-cinza-10 !default;
+$cor-do-hover-de-fundo-da-linha-par-listrada-da-tabela: $cor-cinza-20 !default;
+
+.tabela {
+  background-color: $cor-de-fundo-da-tabela;
+  color: $cor-do-texto-da-tabela;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+  border-spacing: 8px;
+
+  td,
+  th {
+    border: $borda-da-tabela;
+    border-width: $espessura-da-borda-da-tabela;
+    padding: $padding-da-tabela;
+    vertical-align: top;
+
+    // Cores
+    @each $nome, $par in $cores {
+      $cor: nth($par, 1);
+      $cor-invertida: nth($par, 2);
+
+      &.is-#{$nome} {
+        background-color: $cor;
+        border-color: $cor;
+        color: $cor-invertida;
+      }
+    }
+
+    // Modifiers
+    &.tabela_estreita {
+      white-space: nowrap;
+      width: 1%;
+    }
+
+    &.linha-selecionada {
+      background-color: $cor-do-fundo-da-linha-selecionada-da-tabela;
+      color: $cor-do-texto-da-linha-selecionada-da-tabela;
+
+      a,
+      strong {
+        color: currentColor;
+      }
+    }
+  }
+
+  th {
+    color: $cor-do-titulo-da-tabela;
+    text-align: left;
+  }
+
+  tr {
+    &.linha-selecionada {
+      background-color: $cor-do-fundo-da-linha-selecionada-da-tabela;
+      color: $cor-do-texto-da-linha-selecionada-da-tabela;
+
+      a,
+      strong {
+        color: currentColor;
+      }
+
+      td,
+      th {
+        border-color: $cor-do-texto-da-linha-selecionada-da-tabela;
+        color: currentColor;
+      }
+    }
+  }
+
+  thead {
+    td,
+    th {
+      border-width: $espessura-da-borda-do-cabecalho-da-tabela;
+      color: $cor-do-texto-do-cabecalho-da-tabela;
+    }
+  }
+  tfoot {
+    td,
+    th {
+      border-width: $espessura-da-borda-do-rodape-da-tabela;
+      color: $cor-do-texto-do-rodape-da-tabela;
+    }
+  }
+
+  tbody {
+    tr {
+      &:last-child {
+        td,
+        th {
+          border-bottom-width: 0;
+        }
+      }
+    }
+  }
+
+  // Modificadores
+  &.tabela_com-borda {
+    td,
+    th {
+      border-width: 1px;
+    }
+
+    tr {
+      &:last-child {
+        td,
+        th {
+          border-bottom-width: 1px;
+        }
+      }
+    }
+  }
+
+  &.tabela_com-largura-total {
+    width: 100%
+  }
+
+  &.tabela_com-hover-na-linha {
+    tbody {
+      tr:not(.linha-selecionada) {
+        &:hover {
+          background-color: $cor-do-hover-do-fundo-da-linha-da-tabela;
+        }
+      }
+    }
+
+    &.tabela_listrada {
+      tbody {
+        tr:not(.linha-selecionada) {
+          &:hover {
+            background-color: $cor-do-hover-de-fundo-da-linha-par-listrada-da-tabela;
+          }
+        }
+      }
+    }
+  }
+
+  &.tabela_estreita {
+    td,
+    th {
+      padding: .25em .5em;
+    }
+  }
+
+  &.tabela_listrada {
+    tbody {
+      tr:not(.linha-selecionada) {
+        &:nth-child(even) {
+          background-color: $cor-de-fundo-da-linha-par-listrada-da-tabela;
+        }
+      }
+    }
+  }
+}

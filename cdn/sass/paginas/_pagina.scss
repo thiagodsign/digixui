@@ -1,0 +1,18 @@
+.pagina {
+  background: #EEE;
+}
+
+.pagina_com-menu-lateral {
+  .pagina__conteudo-container_minimizado {
+    width: calc(100% - 256px);
+    margin-left: 256px;
+  }
+  .pagina__conteudo-container_maximizado {
+    width: calc(100% - 54px);
+    margin-left: 54px;
+  }
+}
+
+.pagina_sem-menu-lateral {
+  // Dependência para calcular a largura do .conteudo-principal sem o menu lateral
+}

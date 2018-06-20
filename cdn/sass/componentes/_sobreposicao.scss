@@ -1,0 +1,12 @@
+.sobreposicao {
+  @include transicao-padrao;
+  
+}
+.sobreposicao_ativo {
+  background: rgba($cor-quaternaria, .2);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 2;
+}

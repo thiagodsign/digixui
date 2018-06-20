@@ -1,0 +1,140 @@
+.cabecalho-sistema {
+  background: $cor-terciaria;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 16px;
+  width: 100%;
+  height: 48px;
+  z-index: 4;
+}
+
+.cabecalho-sistema_fixo {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.cabecalho-sistema__container-primario {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+
+  .cabecalho-sistema__logo {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    margin: 0 16px;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .cabecalho-sistema__menu {
+    display: flex;
+    height: 100%;
+  }
+
+  .cabecalho-sistema__item-de-menu {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: .75;
+    white-space: nowrap;
+
+    &.cabecalho-sistema__item-de-menu_ativo {
+      opacity: 1;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      border-bottom: 3px solid $cor-secundaria;
+      border-top: 3px solid transparent;
+      color: $cor-branca;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  .cabecalho-sistema__item-de-menu {
+    white-space: nowrap;
+    text-decoration: none;
+    color: $cor-branca;
+    margin: 0 16px;
+    font-size: 14px;
+    @include fonte-seminegrito;
+
+    &.cabecalho-sistema__item-de-menu_ativo {
+      border-bottom: 3px solid $cor-secundaria;
+      text-decoration: none;
+      @include fonte-seminegrito;
+    }
+  }
+}
+
+.cabecalho-sistema__container-secundario {
+  display: flex;
+  align-items: center;
+  flex-grow: 0;
+
+  .cabecalho-sistema__menu {
+    display: flex;
+    position: relative;
+    height: 100%;
+
+    .cabecalho-sistema__item-de-menu {
+      @include fonte-regular;
+      font-family: $fonte-padrao;
+      font-size: $fonte-pequena;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding: 0 8px;
+      margin-left: 8px;
+      cursor: pointer;
+      background: transparent;
+      border: 0;
+      color: $cor-branca;
+      white-space: nowrap;
+      line-height: 16px;
+
+      &:hover {
+        background: darken($cor-terciaria, 4%);
+      }
+  
+      &:focus {
+        background: darken($cor-terciaria, 4%);
+        outline: 0;
+      }
+  
+      .cabecalho-sistema__icone-do-usuario {
+        border: 2px solid $cor-secundaria;
+        color: $cor-branca;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+        margin-right: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+
+    .cabecalho-sistema__item-de-menu_com-icone {
+      svg {
+        margin-right: 8px;
+        font-size: 14px;
+      }
+    }
+  }
+}

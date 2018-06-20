@@ -1,0 +1,17 @@
+.rodape-sistema {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+}
+
+.rodape-sistema__texto {
+  font-size: 14px;
+  color: $cor-cinza-80;
+}
+
+.rodape-sistema__logo {
+  width: 48px;
+  margin: 16px 48px 16px 16px;
+}

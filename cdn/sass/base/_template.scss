@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $fonte-padrao;
+  padding: 0;
+  margin: 0;
+}
+
+strong {
+  @include fonte-negrito;
+}
+
+hr {
+  @include resetar-linha;
+}
